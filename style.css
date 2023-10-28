@@ -4,220 +4,210 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Poppins', sans-serif
+    font-family: 'Poppins', sans-serif;
+}
+
+:root {
+    --clr: #14161e;
 }
 
 body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     min-height: 100vh;
+    background: var(--clr);
 }
 
-body {
-    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4OpFaT6656GPwFlFIVSqX7N6ywF35M0X0GA9KhfkUkJifinX70rEKpB5AExY_YizFp7I&usqp=CAU');
-    background-repeat: no-repeat;
-    background-attachment: fixed; 
-    background-size: 100% 100%;
-  }
-
-.box {
-    position: relative;
-    width: 380px;
-    height: 420px;
-    background: #1c1c1c;
-    border-radius: 8px;
-    overflow: hidden;
-}
-
-.box::before 
-{
-    content: '';
+.sidebar {
     position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 380px;
-    height: 420px;
-    background: linear-gradient(0deg,transparent,transparent,#45f3ff,#45f3ff,#45f3ff);
-    z-index: 1;
-    transform-origin: bottom right;
-    animation: animate 6s linear infinite;
-}
-
-.box::after
-{
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 380px;
-    height: 420px;
-    background: linear-gradient(0deg,transparent,transparent,#45f3ff,#45f3ff,#45f3ff);
-    z-index: 1;
-    transform-origin: bottom right;
-    animation: animate 6s linear infinite;
-    animation-delay: -3s;
-}
-
-.borderLine
-{
-    position: absolute;
-    top: 0;
-    inset: 0;
-}
-
-.borderLine::before
-{
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 380px;
-    height: 420px;
-    background: linear-gradient(0deg,transparent,transparent,#ff2770,#ff2770,#ff2770);
-    z-index: 1;
-    transform-origin: bottom right;
-    animation: animate 6s linear infinite;
-    animation-delay: -1.5s; 
-}
-
-.borderLine::after
-{
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 380px;
-    height: 420px;
-    background: linear-gradient(0deg,transparent,transparent,#ff2770,#ff2770,#ff2770);
-    z-index: 1;
-    transform-origin: bottom right;
-    animation: animate 6s linear infinite;
-    animation-delay: -4.5s; 
-}
-
-@keyframes animate
-{
-    0%
-    {
-        transform: rotate(0deg);
-    }
-    100%
-    {
-        transform: rotate(360deg);
-    }
-}
-
-
-.box form {
-    position: absolute;
-    inset: 4px;
-    background: #222;
-    padding: 50px 40px;
-    border-radius: 8px;
-    z-index: 2;
-    display: flex;
-    flex-direction: column;
-}
-
-.box form h2 {
-    color: #fff;
-    font-weight: 500;
-    text-align: center;
-    letter-spacing: 0.1em;
-}
-
-.box form .inputBox {
-    position: relative;
-    width: 300px;
-    margin-top: 35px;
-}
-
-.box form .inputBox input {
-    position: relative;
-    width: 100px;
-    padding: 20px 10px 10px;
-    background: transparent;
-    outline: none;
-    border: none;
-    box-shadow: none;
-    color: #23242a;
-    font-size: 1em;
-    letter-spacing: 0.05em;
-    transition: 0.5s;
-    z-index: 10;
-}
-
-.box form .inputBox span {
-    position: absolute;
-    left: 0;
-    padding: 20px 10px 10px;
-    pointer-events: none;
-    color: #8f8f8f;
-    font-size: 1em;
-    letter-spacing: 0.05em;
-    transition: 0.5s;
-}
-
-.box form .inputBox input:valid ~ span,
-.box form .inputBox input:focus ~ span
-{
-  color: #fff;
-  font-size: 0.75em;
-  transform: translateY(-34px);  
-}
-
-.box form .inputBox i {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height: 2px;
+    width: 80px;
+    height: 100vh;
     background: #fff;
-    border-radius: 4px;
+    transform: 0.5s;
+    padding-left: 10px;
     overflow: hidden;
-    transition: 0.5s;
-    pointer-events: none;
 }
 
-.box form .inputBox input:valid ~ i,
-.box form .inputBox input:focus ~ i
-{
-    height: 44px;
+.sidebar.active {
+    width: 300px;
+}
+.sidebar ul {
+    position: relative;
+    height: 100vh;
 }
 
-.box form .links {
+.sidebar ul li {
+    position: relative;
+    list-style: none;
+}
+
+.sidebar ul li.active {
+    background: var(--clr);
+    border-bottom-left-radius: 50px;
+    border-bottom-left-radius: 50px;
+}
+
+.sidebar ul li.active::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    right: 0;
+    width: 20px;
+    height: 20px;
+    border-top-right-radius: 20px;
+    box-shadow: 5px 5px 0 5px var(--clr);
+    background: #f00;
+}
+
+.sidebar ul li.active::before {
+    content: '';
+    position: absolute;
+   bottom: -20px;
+    right: 0;
+    width: 20px;
+    height: 20px;
+    border-top-right-radius: 20px;
+    box-shadow: 5px -5px 0 5px var(--clr);
+    background: #f00;
+}
+
+.sidebar ul li.logo {
+    margin-bottom: 50px;
+}
+
+.sidebar ul li.logo .icon {
+    font-size: 2em;
+    color: var(--clr);
+}
+
+.sidebar ul li.logo .text {
+    font-size: 1.2em;
+    font-weight: 500;
+    color: var(--clr);
+}
+
+.sidebar ul li a {
+    position: relative;
     display: flex;
-    justify-content: space-between;
-}
-
-.box form .liks a {
-    margin: 10px 0;
-    font-size: 0.75em;
-    color: #8f8f8f;
+    white-space: nowrap;
     text-decoration: none;
 }
 
-.box form .links a:hover 
-.box form .links a:nth-child(2) {
+.sidebar ul li a .icon {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 60px;
+    padding-left: 10px;
+    height: 70px;
+    font-size: 1.5em;
+    color: #333;
+    transform: 0.5s;
+}
+
+.sidebar ul li a .text {
+    position: relative;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    font-size: 1em;
+    color: #333;
+    padding-left: 15px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transform: 0.5s;
+}
+
+.sidebar ul li.acrive a .icon {
     color: #fff;
 }
 
-.box form input[type="submit"]
-{
-    border: none;
-    outline: none;
-    padding: 9px 25px;
-    background: #fff;
-    cursor: pointer;
-    font-size: 0.9em;
-    border-radius: 4px;
-    font-weight: 600;
-    width: 100px;
-    margin-top: 10px;
+.sidebar ul li.acrive a .text {
+    color: var(--bg);
 }
 
-.box form input[type="submit"]:active
+.sidebar ul li:hover a .icon,
+.sidebar ul li:hover a .text
 {
-    opacity: 0.8;
+    color: var(--bg);
+}
+
+.sidebar ul li.active a .icon::before {
+    content: '';
+    position: absolute;
+    inset: 5px;
+    width: 60px;
+    background: var(--bg);
+    border-radius: 50%;
+    transition: 0.5s;
+}
+
+.sidebar ul li:hover.active a .icon::before {
+    background: #fff;
+}
+
+.bottom {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.imgBx {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.imgBx img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.menuToggle {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background: #31a4ff;
+    z-index: 1000;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.menuToggle::before {
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 3px;
+    background: #fff;
+    transform: translateY(-9px);
+    transition: 0.5s;
+    box-shadow: 0 9px 0 #fff;
+}
+
+.menuToggle::after {
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 3px;
+    background: #fff;
+    transform: translateY(-9px);
+    transform: 0.5s;
+}
+
+.menuToggle.active::before {
+    transform: translateY(0px) rotate(45deg);
+    box-shadow: 0 0 0 #fff;
+}
+
+.menuToggle.active::after {
+    transform: translateY(0px) rotate(-45deg);
 }
